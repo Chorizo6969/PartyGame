@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
 
     private Vector2 _inputMovement;
+
+    [SerializeField]
     private float _speed;
+
     private bool _canMove = true;
 
     public static PlayerMovement Instance;
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Instance = this;
     }
+
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         _inputMovement = callbackContext.ReadValue<Vector2>();
