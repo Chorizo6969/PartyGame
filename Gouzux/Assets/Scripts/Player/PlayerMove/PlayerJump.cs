@@ -49,7 +49,7 @@ public class PlayerJump : MonoBehaviour
         RaycastHit2D hit;
         Vector3 endPos = startPos + (distance * direction);
         int layerMask = 1 << 6;
-        hit = Physics2D.Raycast(startPos, direction, distance, layerMask);
+        hit = Physics2D.BoxCast(startPos, new Vector2 (1 ,0.8f), 90, direction, distance, layerMask);
         if (hit.collider == null) //Vérification que l'on touche bien un collider (sinon null ref)
         {
             Debug.Log("Attention vous ne touchez rien");
