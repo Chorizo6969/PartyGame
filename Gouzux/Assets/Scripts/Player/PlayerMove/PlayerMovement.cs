@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CharacterController))]
 /// <summary>
 /// Script qui gère les mouvements du joueur
 /// </summary>
@@ -16,11 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _canMove = true;
 
+    private CharacterController _controller;
+
     public static PlayerMovement Instance;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        _controller = gameObject.AddComponent<CharacterController>();
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)

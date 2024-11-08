@@ -35,7 +35,7 @@ public class PlayerJump : MonoBehaviour
                 StartCoroutine(Delay());
             }
         }
-
+        Debug.Log("AH");
     }
 
     /// <summary>
