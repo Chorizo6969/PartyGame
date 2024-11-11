@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("as");
         _inputMovement = callbackContext.ReadValue<Vector2>();
         if (callbackContext.canceled)
         {

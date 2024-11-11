@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+/// <summary>
+/// Script qui gère la manière du screen shake
+/// </summary>
 public class CameraShakeManager : MonoBehaviour
 {
-    public static CameraShakeManager Instance;
-
     [SerializeField]
     private float globalShakeForce = 1f;
+
+    public static CameraShakeManager Instance;
 
     private void Awake()
     {

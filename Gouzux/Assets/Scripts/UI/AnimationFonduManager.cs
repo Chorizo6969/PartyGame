@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationStart : MonoBehaviour
+/// <summary>
+/// Script qui gère l'ouverture et la fermeture du niveau
+/// </summary>
+public class AnimationFonduManager : MonoBehaviour
 {
     [SerializeField]
     private Animation _start;
 
-    public static AnimationStart Instance;
+    public static AnimationFonduManager Instance;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class AnimationStart : MonoBehaviour
     void Start()
     {
         _start.Play();
+        Time.timeScale = 1.0f;
     }
 
     public void MakeAnimation(AnimationClip newClip)
