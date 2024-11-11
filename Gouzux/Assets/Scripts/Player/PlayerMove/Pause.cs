@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext callbackContext)
     {
+        //N'importe quel joueur...
         _playerInput.SwitchCurrentActionMap("UI");
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;

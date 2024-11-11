@@ -13,7 +13,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
-            PlayerDeath.Instance.StartDeath(_impulseSource);
+            PlayerDeath.Instance.StartDeath(_impulseSource, collision.gameObject);
         }
     }
 }
