@@ -252,6 +252,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &877947428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877947429}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &877947429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877947428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2140639695}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1891100351
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +389,7 @@ GameObject:
   - component: {fileID: 1960547125}
   - component: {fileID: 1960547124}
   - component: {fileID: 1960547123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Caisse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +790,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 877947429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2140639696
@@ -774,10 +806,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a41900ca892094cb2d824371f2956f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 65
+  _jumpForce: 12.5
   _rb: {fileID: 2140639697}
-  _distance: 1
-  IsGrounded: 1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundCheck: {fileID: 877947429}
 --- !u!50 &2140639697
 Rigidbody2D:
   serializedVersion: 4
