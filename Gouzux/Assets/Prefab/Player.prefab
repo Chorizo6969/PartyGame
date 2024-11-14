@@ -253,9 +253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 12.5
   _rb: {fileID: 7345554706119774576}
-  _groundLayer:
+  _groundLayer1:
     serializedVersion: 2
     m_Bits: 64
+  _groundLayer2:
+    serializedVersion: 2
+    m_Bits: 256
   _groundCheck: {fileID: 3750032380969301097}
 --- !u!114 &3281901718457526404
 MonoBehaviour:

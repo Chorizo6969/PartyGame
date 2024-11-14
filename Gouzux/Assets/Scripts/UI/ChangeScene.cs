@@ -36,7 +36,6 @@ public class ChangeScene : MonoBehaviour
     /// </summary>
     public void ChargeScene()
     {
-        Debug.Log(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 

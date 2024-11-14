@@ -11,7 +11,7 @@ public class DeathZone : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 8)
         {
             PlayerDeath.Instance.StartDeath(_impulseSource, collision.gameObject);
         }

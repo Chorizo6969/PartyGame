@@ -13,7 +13,10 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D _rb;
 
     [SerializeField]
-    private LayerMask _groundLayer;
+    private LayerMask _groundLayer1;
+
+    [SerializeField]
+    private LayerMask _groundLayer2;
 
     [SerializeField]
     private Transform _groundCheck;
@@ -38,6 +41,6 @@ public class PlayerJump : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer);
+        return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer1) || Physics2D.OverlapCircle(_groundCheck.position, 0.2f ,_groundLayer2);
     }
 }
