@@ -48,4 +48,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+        }
+    }
 }
