@@ -34,13 +34,5 @@ public class PlayerAnimation : MonoBehaviour
     public void SetJump()
     {
         _animator.SetBool("IsJump", true);
-        string name = "IsJump";
-        StartCoroutine(DesactiveAnystate(name));
-    }
-
-    IEnumerator DesactiveAnystate(string BoolName)
-    {
-        yield return new WaitForSeconds(0.3f);
-        _animator.SetBool(BoolName, false);
     }
 }

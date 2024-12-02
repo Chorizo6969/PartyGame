@@ -45,4 +45,12 @@ public class PlayerJump : MonoBehaviour
     {
         return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer1) || Physics2D.OverlapCircle(_groundCheck.position, 0.2f ,_groundLayer4) || Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer3);
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "solide")
+        {
+            GetComponent<Animator>().SetBool("IsJump", false);
+        }
+    }
 }
