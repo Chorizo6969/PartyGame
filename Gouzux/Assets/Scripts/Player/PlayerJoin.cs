@@ -10,7 +10,7 @@ public class PlayerJoin : MonoBehaviour
 
     public void OnJoin()
     {
-        if (_playerInputManager.playerCount == 2)
+        if (_playerInputManager.playerCount == 0)
         {
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         }
@@ -18,11 +18,11 @@ public class PlayerJoin : MonoBehaviour
         {
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
-        else if (_playerInputManager.playerCount == 3)
+        else if (_playerInputManager.playerCount == 2)
         {
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.green;
         }
-        else if (_playerInputManager.playerCount == 4)
+        else if (_playerInputManager.playerCount == 3)
         {
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
         }
