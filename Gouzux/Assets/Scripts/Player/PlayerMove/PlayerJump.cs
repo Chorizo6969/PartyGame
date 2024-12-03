@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,59 +12,37 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private Rigidbody2D _rb;
 
+    [SerializeField] private LayerMask _groundLayer1;
+
+    [SerializeField] private LayerMask _groundLayer3;
+
+    [SerializeField] private LayerMask _groundLayer4;
+
     [SerializeField]
-    private float _distance;
-
-    public bool IsGrounded;
-    public static PlayerJump Instance;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    private Transform _groundCheck;
     public void OnJump(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && IsGrounded() && !GetComponent<Crate>()._isOnCrate)
         {
-            DetectHit(transform.localPosition, _distance, new Vector3(0, -1, 0));
-            if (IsGrounded == true)
-            {
-                _rb.AddForce(new Vector2(0, _jumpForce * 10));
-                StartCoroutine(Delay());
-            }
+            GetComponent<PlayerAnimation>().SetJump();
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
         }
-        Debug.Log("AH");
+        if (callbackContext.canceled && _rb.velocity.y > 0 && !GetComponent<Crate>()._isOnCrate)
+        {
+            GetComponent<PlayerAnimation>().SetJump();
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
+        }
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer1) || Physics2D.OverlapCircle(_groundCheck.position, 0.2f ,_groundLayer4) || Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer3);
     }
 
-    /// <summary>
-    /// Fonction qui trace un raycast pour savoir si le joueur peut sauter ou non
-    /// </summary>
-    /// <param name="startPos"></param>
-    /// <param name="distance"></param>
-    /// <param name="direction"></param>
-    void DetectHit(Vector3 startPos, float distance, Vector3 direction)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D hit;
-        Vector3 endPos = startPos + (distance * direction);
-        int layerMask = 1 << 6;
-        hit = Physics2D.BoxCast(startPos, new Vector2 (1 ,0.8f), 90, direction, distance, layerMask);
-        if (hit.collider == null) //Vérification que l'on touche bien un collider (sinon null ref)
+        if (collision.gameObject.tag == "solide" || collision.gameObject.layer == 7)
         {
-            Debug.Log("Attention vous ne touchez rien");
-            return;
+            GetComponent<Animator>().SetBool("IsJump", false);
         }
-        if (hit.collider.gameObject.layer == 6)
-        {
-            IsGrounded = true;
-            endPos = hit.point;
-        }
-        Debug.DrawLine(startPos, endPos, Color.red);
-    }
-
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(0.05f);
-        IsGrounded = false;
     }
 }
