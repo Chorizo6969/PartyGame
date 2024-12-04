@@ -18,21 +18,18 @@ public class PlayerJoin : MonoBehaviour
     {
         if (jetesauvelavie == 0)
         {
-            Debug.Log("BLEU");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.red;
             jetesauvelavie++;
             await Task.Delay(1000);
         }
         else if (jetesauvelavie == 1)
         {
-            Debug.Log("ROUGE");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.green;
             jetesauvelavie++;
             await Task.Delay(1000);
         }
         else if (jetesauvelavie == 2)
         {
-            Debug.Log("VERT");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
             jetesauvelavie++;
             await Task.Delay(1000);
