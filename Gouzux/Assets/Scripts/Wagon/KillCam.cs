@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 public class KillCam : MonoBehaviour
 {
@@ -12,5 +13,6 @@ public class KillCam : MonoBehaviour
         {
             PlayerDeath.Instance.StartDeath(_impulseSource, collision.gameObject);
         }
+        //GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
     }
 }
