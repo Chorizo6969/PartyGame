@@ -9,31 +9,33 @@ public class PlayerJoin : MonoBehaviour
     [SerializeField]
     private PlayerInputManager _playerInputManager;
 
+    public int jetesauvelavie = 0;
+    private void Awake()
+    {
+        _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+    }
     public async void OnJoin()
     {
-        if (_playerInputManager.playerCount == 1)
+        if (jetesauvelavie == 0)
         {
-            _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
-            await Task.Delay(1000);
-        }
-        else if(_playerInputManager.playerCount == 2)
-        {
+            Debug.Log("BLEU");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            jetesauvelavie++;
             await Task.Delay(1000);
         }
-        else if (_playerInputManager.playerCount == 3)
+        else if (jetesauvelavie == 1)
         {
+            Debug.Log("ROUGE");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+            jetesauvelavie++;
             await Task.Delay(1000);
         }
-        else if (_playerInputManager.playerCount == 4)
+        else if (jetesauvelavie == 2)
         {
+            Debug.Log("VERT");
             _playerInputManager.playerPrefab.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+            jetesauvelavie++;
             await Task.Delay(1000);
         }
-    }
-    private void Update()
-    {
-        Debug.Log(_playerInputManager.playerCount);
     }
 }

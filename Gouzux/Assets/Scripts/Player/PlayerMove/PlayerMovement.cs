@@ -13,6 +13,22 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _canMove = true;
 
+    [SerializeField]
+    private PlayerInputManager _playerInputManager;
+
+    private void Start()
+    {
+        _playerInputManager = FindAnyObjectByType<PlayerInputManager>();
+        if (_playerInputManager.playerCount % 2 == 0)
+        {
+            transform.position = new Vector3(_playerInputManager.playerPrefab.transform.position.x, -2, _playerInputManager.playerPrefab.transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(_playerInputManager.playerPrefab.transform.position.x, 4, _playerInputManager.playerPrefab.transform.position.z);
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         _inputMovement = callbackContext.ReadValue<Vector2>();

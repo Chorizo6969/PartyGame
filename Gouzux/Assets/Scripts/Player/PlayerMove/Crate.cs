@@ -25,7 +25,7 @@ public class Crate : MonoBehaviour
             Debug.Log("AAAAAAAAAAAAAH");
         }
 
-        Debug.Log("Velocity " + gameObject.name + " : " + _rb.velocity);
+        //Debug.Log("Velocity " + gameObject.name + " : " + _rb.velocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +36,7 @@ public class Crate : MonoBehaviour
         }
         if ((collision.gameObject.layer == 7 || collision.gameObject.layer == 9)) // Caisses ou player
         {
-            Debug.Log("truc sur ma tete");
+            //Debug.Log("truc sur ma tete");
             if (collision.transform.position.y < transform.position.y)
             {
                 _isOnCrate = true;
