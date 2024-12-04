@@ -19,5 +19,10 @@ public class Movement : MonoBehaviour
             _rb.velocity = new Vector2(_speed, _rb.velocity.y);
         }
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            ChangeScene.Instance.ChargeScene();
+        }
+
     }
 }

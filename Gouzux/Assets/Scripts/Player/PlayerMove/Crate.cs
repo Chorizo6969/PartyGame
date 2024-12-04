@@ -6,7 +6,6 @@ public class Crate : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rb;
-    private bool _canMove = true;
     [SerializeField] public bool _isOnCrate;
 
     public Rigidbody2D boxRigidbody;

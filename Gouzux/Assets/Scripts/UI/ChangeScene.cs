@@ -44,7 +44,6 @@ public class ChangeScene : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false; //arrête l'éditor
         Application.Quit();
     }
 

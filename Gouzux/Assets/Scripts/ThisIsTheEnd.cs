@@ -10,9 +10,15 @@ public class ThisIsTheEnd : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
-            _THEEND.SetActive(true);
-            Time.timeScale = 0;
-            gameObject.SetActive(false);
+            StartCoroutine(Delay());
         }
+    }
+
+    IEnumerator Delay()
+    {
+        _THEEND.SetActive(true);
+        yield return new WaitForSeconds(1);
+        Time.timeScale = 0;
+        gameObject.SetActive(false);
     }
 }
