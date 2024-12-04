@@ -9,15 +9,19 @@ public class Crate : MonoBehaviour
     private bool _canMove = true;
     [SerializeField] public bool _isOnCrate;
 
-    [SerializeField] private Rigidbody2D boxRigidbody;
+    public Rigidbody2D boxRigidbody;
 
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     private void FixedUpdate()
     {
-        if (_isOnCrate && boxRigidbody.transform.position.y > transform.position.y)
+        if (_isOnCrate && boxRigidbody.transform.position.y < transform.position.y)
         {
             //Vector2 boxVelocity = boxRigidbody.velocity;
-            boxRigidbody.velocity += new Vector2(_rb.velocity.x, boxRigidbody.velocity.y);
+            _rb.velocity += new Vector2(boxRigidbody.velocity.x, boxRigidbody.velocity.y);
             Debug.Log("AAAAAAAAAAAAAH");
         }
 
@@ -30,10 +34,13 @@ public class Crate : MonoBehaviour
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
-        if ((collision.gameObject.layer == 7 || collision.gameObject.layer == 9) && collision.transform.position.y > transform.position.y) // Caisses ou player
+        if ((collision.gameObject.layer == 7 || collision.gameObject.layer == 9)) // Caisses ou player
         {
             Debug.Log("truc sur ma tete");
-            _isOnCrate = true;
+            if (collision.transform.position.y < transform.position.y)
+            {
+                _isOnCrate = true;
+            }
             boxRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             _rb.velocity = new Vector2(boxRigidbody.velocity.x, _rb.velocity.y);
         }

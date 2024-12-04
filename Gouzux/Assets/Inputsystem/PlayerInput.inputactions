@@ -92,7 +92,7 @@
                 {
                     "name": "",
                     "id": "3a4381a2-bfd8-4dca-a769-91195db60b80",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Controller",

@@ -22,7 +22,7 @@ public class PlayerJump : MonoBehaviour
     private Transform _groundCheck;
     public void OnJump(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && IsGrounded() && !GetComponent<Crate>()._isOnCrate)
+        if (callbackContext.performed && IsGrounded() && (GetComponent<Crate>()._isOnCrate == (GetComponent<Crate>().boxRigidbody != null)))
         {
             GetComponent<PlayerAnimation>().SetJump();
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
